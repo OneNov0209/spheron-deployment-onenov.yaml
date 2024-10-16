@@ -1,0 +1,19 @@
+version: 1
+name: onenov-deployment
+components:
+  - name: onenov-service
+    image: onenov/my-custom-app:latest
+    ports:
+      - port: 80
+        targetPort: 8080
+    env:
+      - name: NODE_ENV
+        value: production
+    resources:
+      limits:
+        cpu: "0.5"
+        memory: "512Mi"
+      requests:
+        cpu: "0.1"
+        memory: "128Mi"
+    replicas: 2
